@@ -1,0 +1,1633 @@
+@charset "utf-8";
+
+.inner {
+  width: 87%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  color: #484848;
+  word-break: break-all;
+  background-color: #353838;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: initial;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+.main-top {
+  display: none;
+}
+
+/* header */
+
+#searchform {
+  position: relative;
+  border: 0.5px solid;
+}
+#searchform input {
+  padding: 5px;
+}
+
+#searchform button {
+  position: absolute;
+  top: 20%;
+  right: -40px;
+}
+
+header {
+  /* background-color: #015958; */
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.header-back {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  /* background-color: #015958; */
+}
+
+.header-back .inner h1 {
+  font-family: "Bradley Hand";
+  color: #fff;
+}
+
+.nomal nav {
+  display: none;
+}
+
+.navout nav {
+  display: block;
+  position: fixed;
+  background-color: rgba(56, 56, 56, 0.9);
+  width: 220px;
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  transition: all 0.5s;
+  z-index: 3;
+  opacity: 0;
+}
+
+.open nav {
+  left: 0;
+  opacity: 1;
+}
+
+.navin {
+  padding: 25px;
+}
+
+.navin ul li {
+  margin: 0;
+  border-bottom: 1px solid #333;
+}
+
+.navout ul li a {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  padding: 1rem;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+
+.main-top2 .navin ul li a {
+  display: block;
+  /* color: #fff; */
+  font-size: 14px;
+  padding: 1rem;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+
+.navout ul li a:hover {
+  background: #e4e4e4;
+  color: #484848;
+  padding: 25px;
+}
+
+.toggle-btn {
+  display: block;
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.toggle-btn span {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #353838;
+  transition: all 0.5s;
+  border-radius: 4px;
+}
+
+.toggle-btn span:nth-child(1) {
+  top: 4px;
+}
+
+.toggle-btn span:nth-child(2) {
+  top: 14px;
+}
+
+.toggle-btn span:nth-child(3) {
+  bottom: 4px;
+}
+
+.open .toggle-btn span {
+  background-color: #353535;
+}
+
+.open .toggle-btn span:nth-child(1) {
+  transform: translateY(10px) rotate(-315deg);
+}
+
+.open .toggle-btn span:nth-child(2) {
+  opacity: 0;
+}
+
+.open .toggle-btn span:nth-child(3) {
+  transform: translateY(-10px) rotate(315deg);
+}
+
+.open #mask {
+  display: block;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  opacity: 0.8;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* main
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {
+  position: relative;
+  z-index: 1;
+  /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+  height: 80vh;
+  /*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+}
+
+/*　背景画像設定　*/
+
+.mujinaru img {
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.slider-item {
+  width: 100%;
+  /*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+  height: 20vh;
+  /*各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+  background-repeat: no-repeat;
+  /*背景画像をリピートしない*/
+  background-position: center;
+  /*背景画像の位置を中央に*/
+  background-size: cover;
+  /*背景画像が.slider-item全体を覆い表示*/
+  background-attachment: fixed;
+}
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+  position: absolute;
+  /*絶対配置にする*/
+  z-index: 3;
+  top: 42%;
+  cursor: pointer;
+  /*マウスカーソルを指マークに*/
+  outline: none;
+  /*クリックをしたら出てくる枠線を消す*/
+  border-top: 2px solid #ccc;
+  /*矢印の色*/
+  border-right: 2px solid #ccc;
+  /*矢印の色*/
+  height: 25px;
+  width: 25px;
+}
+
+.slick-prev {
+  /*戻る矢印の位置と形状*/
+  left: 2.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {
+  /*次へ矢印の位置と形状*/
+  right: 2.5%;
+  transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin: -50px 0 0 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-dots button {
+  color: transparent;
+  outline: none;
+  width: 8px;
+  /*ドットボタンのサイズ*/
+  height: 8px;
+  /*ドットボタンのサイズ*/
+  display: block;
+  border-radius: 50%;
+  background: #ccc;
+  /*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button {
+  background: #333;
+  /*ドットボタンの現在地表示の色*/
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+.main-top2 h1 {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 6vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #484848;
+  font-size: 30px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.main-top2 a {
+  text-decoration: none;
+  color: #484848;
+  font-size: 30px;
+}
+
+.main-top2 a {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 27.5px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 51%;
+  font-size: 18px;
+}
+
+.main-top2 h1 {
+  font-family: Bradley Hand;
+  text-align: center;
+  font-size: 40px;
+  word-break: keep-all;
+}
+
+.kijifont {
+  font-family: "Toppan Bunkyu Midashi Mincho";
+}
+
+.fist {
+  background-color: #f5f5f5;
+}
+/*------------*/
+.fist h1 {
+  font-size: 20px;
+  text-align: left;
+  display: block;
+  position: static;
+  color: #333;
+  transform: none;
+}
+
+/*
+new posts */
+
+.background-newposts {
+  background-color: #f5f5f5;
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: "Zen Old Mincho", serif;
+  font-weight: bold;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+h2::after {
+  content: "";
+  display: flex;
+  border-bottom: solid #484848;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.newposts .inner {
+  width: 100%;
+}
+
+.posts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.posts article {
+  width: 50%;
+}
+
+.posts article img {
+  height: 200px;
+}
+
+.time {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  text-decoration: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.time p {
+  padding-left: 10px;
+}
+
+.time .text {
+  font-size: 10px;
+  color: #333;
+}
+
+.box img {
+  max-width: auto;
+  height: 270px;
+  object-fit: cover;
+}
+
+.newposts .box {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.newposts .box a {
+  text-decoration: none;
+}
+
+.box p {
+  color: #484848;
+}
+
+.box .post-flex {
+  display: flex;
+}
+
+.time time {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.time .category-tag {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: auto;
+  display: block;
+  background: rgba(0, 0, 0, 52%);
+  color: #fff;
+  padding: 10px;
+}
+
+.time h3 {
+  margin-left: 10px;
+  color: #484848;
+  text-decoration: none;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.box {
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.box img {
+  transition: 0.3s;
+  display: block;
+}
+
+.box:hover img {
+  transform: scale(1.1);
+}
+
+/* archive */
+
+.arcv {
+  background-color: #353838;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #fff;
+}
+
+.arcv h2::after {
+  content: "";
+  display: block;
+  border-bottom: solid #fff;
+  width: 80%;
+}
+
+.arcv a {
+  color: #fff;
+  font-size: 19px;
+  text-decoration: none;
+}
+
+.arcv li {
+  margin: 15px;
+}
+
+.arcv ul {
+  align-items: center;
+  overflow: auto;
+  height: 400px;
+}
+
+.background-yoko {
+  background-color: #f5f5f5;
+}
+
+.sukuroru {
+  background-color: #f7f6f6;
+}
+
+.sukuroru ul {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.sukuroru a {
+  color: #484848;
+}
+
+.sukuroru::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  display: none; /*------*/
+}
+
+.sukuroru::-webkit-scrollbar-track {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+.sukuroru::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 8px;
+}
+
+.past-posts {
+  padding: 50px 0;
+}
+
+.past-posts li {
+  font-size: 14px;
+  padding: 15px 0;
+  border: 0.5px solid #484848;
+  width: 90%;
+  margin: 10px auto;
+}
+.past-posts li .category-tag {
+  display: none;
+}
+
+.past-posts span {
+  font-size: 10px;
+  margin-left: 20px;
+  border-bottom: 1px solid #333333;
+}
+
+.past-posts li .post-flex {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.past-posts li .post-flex .post-text {
+  padding-left: 5px;
+  width: 50%;
+  height: 90px;
+  color: #446196;
+}
+.past-posts li .post-flex .post-text h3 {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 35px;
+}
+
+.past-posts li .post-flex .post-text p {
+  font-size: 10px;
+}
+
+.past-posts li img {
+  width: 50%;
+  height: 90px;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.post-posts p:hover {
+  color: tomato;
+}
+
+.past-posts a {
+  text-decoration: none;
+}
+
+.about {
+  padding: 50px 0;
+}
+
+.about img {
+  margin-right: auto;
+  margin-left: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  object-fit: cover;
+}
+
+.about h3 {
+  font-family: "Toppan Bunkyu Midashi Mincho";
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.about a {
+  text-decoration: none;
+}
+
+.about li {
+  font-size: 14px;
+  padding: 15px 25px;
+}
+
+.about li:not(:last-child) {
+  border-bottom: 0.5px solid#484848;
+}
+
+.cate h2 {
+  margin-top: 50px;
+}
+
+.footer-flex ul {
+  display: flex;
+
+  align-items: flex-start;
+  flex-wrap: wrap;
+  text-decoration: none;
+}
+
+.footer-flex ul li {
+  padding: 5px;
+  border: 0.5px solid #333;
+  margin: 5px 5px;
+}
+
+.footer-flex ul li a {
+  text-decoration: none;
+  color: #446196;
+}
+
+/* カテゴリーfooter */
+
+footer {
+  background-color: #353838;
+  color: #fff;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+footer h2::after {
+  content: "";
+  display: block;
+  border-bottom: solid #fff;
+  width: 80%;
+}
+
+footer h3 {
+  padding-top: 50px;
+  text-align: center;
+  font-size: 25px;
+  font-family: "Toppan Bunkyu Midashi Mincho";
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+}
+
+footer li {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+footer .footer-flex {
+  overflow: auto;
+  padding: 1rem;
+
+  width: 90;
+}
+
+footer p {
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+  border-top: 1px solid#ccc;
+  padding-top: 10px;
+  margin-top: 20px;
+  font-size: 9px;
+  text-align: center;
+}
+
+footer a:hover {
+  border-bottom: 1px solid #ccc;
+}
+
+/* 記事ページ */
+
+.bg_thumbnails {
+  display: block;
+  /*ブロック要素に変更*/
+  height: 500px;
+  /*背景画像の高さを指定*/
+  background-size: cover;
+  /*大きさに指定*/
+  background-position: center center;
+  /*背景として設定する場所を指定*/
+  background-attachment: fixed;
+}
+
+.background-inner {
+  border: 0.5px solid #777777;
+  background-color: #f7f6f6;
+  border-radius: 5px;
+  color: 484848;
+  padding-top: 1px;
+  padding-bottom: 50px;
+}
+
+.background-inner h3 {
+  font-size: 20px;
+  font-family: "Toppan Bunkyu Midashi Mincho";
+  margin-left: 40px;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.background-inner h3::after {
+  content: "";
+  display: block;
+  border-bottom: solid #484848;
+  width: 60%;
+}
+
+.background-inner p {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 25px;
+}
+
+.background-inner ol {
+  margin: 50px auto;
+  width: 50%;
+}
+.background-inner ol li {
+  margin: 10px;
+}
+
+.breadcrumbs {
+  margin: 10px;
+}
+.article-category {
+  border: 0.5px solid #333;
+  padding: 5px;
+  text-align: center;
+  width: 20% !important;
+  margin-left: 25px !important;
+}
+
+.kijimain {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #f5f5f5;
+}
+
+.kijimain img {
+  margin: 25px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
+}
+
+.kijimain h2 {
+  text-align: center;
+  padding: 0;
+  margin: 50px 0px 25px;
+  font-size: 20px;
+}
+
+.codepen-embed-body {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  max-height: 600px;
+}
+
+.comment-respond {
+}
+
+.comment-reply-title {
+  text-align: left;
+}
+.comment-form-author input {
+  border: 1px solid #333;
+}
+
+.comment-body {
+  width: 50%;
+}
+
+.comment-form-email {
+  display: none;
+}
+
+.comment-form-url {
+  display: none;
+}
+
+.comment-form-cookies-consent {
+  display: none;
+}
+
+.comment-notes p {
+  display: none;
+}
+
+.comments {
+  padding: 50px 0;
+  background-color: #f7f6f6;
+  border-radius: 5px;
+}
+
+.comments img {
+}
+
+.nav-previous {
+  display: none;
+  border-radius: 50%;
+}
+
+.submit {
+  background-color: #353838;
+  color: #fff;
+  padding: 10px 70px;
+  border-radius: 50px;
+}
+
+.widget_title {
+  font-size: 30px;
+  font-family: "Bradley Hand";
+}
+
+.widget_title::after {
+  content: "";
+  display: block;
+  border-bottom: solid #484848;
+  width: 60%;
+}
+
+.breadcrumbs span a {
+  text-decoration: none;
+  color: #484848;
+}
+
+.breadcrumbs {
+  margin-bottom: 25px;
+}
+
+textarea {
+  border: solid 1px #333;
+  border-radius: 5px;
+  background-color: transparent;
+  width: 100%;
+}
+
+.sns ul {
+  display: flex;
+}
+
+.sns img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.sns a {
+  margin-left: 60px;
+  text-decoration: none;
+}
+
+.coments p {
+  text-align: right;
+}
+
+.comment-notes {
+  display: none;
+}
+
+.comment-form-comment p {
+  display: none;
+}
+
+.coments h4 {
+  font-size: 30px;
+  font-family: "Toppan Bunkyu Midashi Mincho";
+  margin-top: 50px;
+}
+
+.coments h4::after {
+  content: "";
+  display: block;
+  border-bottom: solid #484848;
+  width: 60%;
+  margin-bottom: 25px;
+}
+
+.single-top .entry-meta {
+  font-size: 14px;
+  margin-right: 0;
+  width: 20%;
+  padding: 10px 10px;
+  text-align: left;
+  color: #000;
+  background: rgba(255, 255, 255, 80%);
+  border-radius: 20px;
+}
+
+iframe {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.single-flex .about {
+  width: 100%;
+  border: 0.5px solid #777777;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+.single-flex .about img {
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  object-fit: cover;
+}
+
+.single-flex .about h2 {
+  text-align: center;
+  font-size: 30px;
+  padding: 0;
+}
+
+.single-flex .about h2::after {
+  content: "";
+  display: block;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0.5px solid #333;
+}
+
+.single-flex .about li {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.single-flex .past-posts {
+  margin-top: 30px;
+  width: 100%;
+  border: 0.5px solid #777777;
+  border-radius: 5px;
+}
+
+.single-flex .past-posts .sukuroru {
+  height: 450px;
+  overflow: auto;
+}
+
+.single-flex .past-posts .sukuroru ul {
+  list-style: circle;
+  display: block;
+}
+.single-flex .past-posts .sukuroru ul li {
+  border: none;
+  border-bottom: 1px dashed #333;
+  width: 100%;
+}
+
+.single-flex .past-posts h2 {
+  text-align: center;
+  font-size: 30px;
+  padding: 0;
+}
+.single-flex .past-posts h2::after {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.single-flex .popular-posts {
+  margin-top: 30px;
+  width: 100%;
+  border: 0.5px solid #777777;
+  border-radius: 5px;
+  padding-bottom: 50px;
+}
+
+.single-flex .popular-posts h2 {
+  text-align: center;
+  font-size: 30px;
+  padding: 0;
+}
+.single-flex .popular-posts h2::after {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.single-flex .popular-posts img {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.single-flex .popular-posts .post-thumbnail {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 100px;
+  max-width: 100%;
+  opacity: 0.8;
+}
+
+.single-flex .popular-posts span.post-wpp-views {
+  display: none;
+}
+
+.single-flex .popular-posts .new_title3 {
+  font-size: 14px;
+  margin-left: 30px;
+}
+
+@media (min-width: 730px) {
+  .inner {
+    width: 85.36%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* header */
+
+  .nomal nav {
+    display: block;
+  }
+
+  .header-back .inner {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nomal {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nomal ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nomal a {
+    text-decoration: none;
+
+    color: #000;
+    font-size: 16px;
+
+    position: relative;
+  }
+
+  .nomal a:hover {
+    color: #353838;
+  }
+
+  .nomal a::after {
+    content: "";
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+
+    /*線の形状*/
+    width: 120%;
+    height: 2px;
+    background: #353838;
+    /*アニメーションの指定*/
+    transition: all 0.3s;
+    transform: scale(0, 1); /*X方向0、Y方向1*/
+    transform-origin: left top; /*左上基点*/
+  }
+
+  .nomal li {
+    padding: 20px 0;
+    margin: 30px 0 0 50px;
+  }
+
+  .toggle-btn {
+    display: none;
+  }
+
+  .main-top2 a {
+    font-size: 50px;
+  }
+
+  .mujinaru img {
+    position: relative;
+    object-fit: cover;
+    width: 100%;
+    height: 96vh;
+    overflow: hidden;
+  }
+
+  /* newposts */
+
+  .background-newposts h2 {
+    text-align: left;
+    font-size: 35px;
+  }
+  h2 {
+    font-size: 35px;
+  }
+
+  h2::after {
+    content: "";
+    display: flex;
+    border-bottom: solid #484848;
+    width: 30%;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .time {
+    margin-bottom: 0;
+  }
+
+  .time time {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .time p {
+    font-size: 15px;
+  }
+
+  .time h3 {
+    margin-left: 10px;
+    color: #484848;
+  }
+
+  .posts {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .posts article {
+    width: 33.33334%;
+    margin-right: 100px;
+    margin-bottom: 50px;
+  }
+
+  .posts article:nth-child(3) {
+    margin-left: auto;
+  }
+
+  .posts article:nth-child(7) {
+    margin-left: auto;
+  }
+
+  .posts article:nth-child(11) {
+    margin-left: auto;
+  }
+
+  .posts article:nth-child(15) {
+    margin-left: auto;
+  }
+
+  .posts article img {
+    height: 270px;
+  }
+
+  .time .text {
+    font-size: 10px;
+    color: #333;
+    width: 20%;
+    margin: 0 auto;
+  }
+
+  .posts1 {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .posts1 article {
+    margin-left: 100px;
+    margin-bottom: 50px;
+  }
+
+  .background-newposts a {
+    width: 500px;
+    overflow: hidden;
+  }
+
+  .newposts .inner {
+    width: 85.36%;
+  }
+
+  .newposts img {
+    width: 480px;
+    height: 270px;
+    object-fit: cover;
+  }
+
+  .background-newposts a:hover {
+    transform: scale(1.05, 1.05);
+    transition: 2s all;
+  }
+
+  /* archive */
+
+  .arcv {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .arcv h2 {
+    text-align: center;
+    padding-bottom: 25px;
+  }
+
+  .arcv h2::after {
+    content: "";
+    display: flex;
+    border-bottom: solid #fff;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .arcv ul {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    padding: 25px;
+    height: 100px;
+  }
+
+  .arcv li {
+    margin: 0 25px;
+  }
+
+  .arcv a {
+    width: 100px;
+    font-size: 16px;
+    display: block;
+    text-decoration: none;
+  }
+
+  /* pastposts */
+
+  .yoko {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .yoko h2 {
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  .yoko h2::after {
+    content: "";
+    display: flex;
+    border-bottom: solid;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .past-posts li {
+    width: 300px;
+    margin: 5px;
+  }
+
+  .past-posts {
+    width: 100%;
+  }
+
+  .past-posts li .category-tag {
+    display: block;
+    position: relative;
+    right: 100%;
+    background: rgba(0, 0, 0, 50%);
+    color: #fff;
+    width: 50%;
+    top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 5px;
+  }
+  .past-posts li .category-tag a {
+    color: #fff;
+  }
+
+  .past-posts li .post-flex .post-text h3 {
+    white-space: normal;
+  }
+
+  .flex-sidebar {
+    width: 42%;
+  }
+
+  .about h3 {
+    font-size: 24px;
+  }
+
+  /* Category */
+
+  footer {
+    padding-top: 50px;
+    padding-bottom: 25px;
+  }
+
+  .footer-flex section {
+    width: 33%;
+  }
+
+  footer h2 {
+    text-align: center;
+  }
+
+  footer h2::after {
+    content: "";
+    display: flex;
+    border-bottom: solid #fff;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* kijipe-ji */
+
+  .single-flex {
+    display: flex;
+  }
+
+  .single-flex .background-inner img {
+    margin: 25px auto 25px;
+    width: 70%;
+  }
+
+  .sidebar {
+    width: 30%;
+  }
+
+  .single-flex .about {
+    width: 100%;
+    border: 0.5px solid #777777;
+    border-radius: 5px;
+  }
+
+  .single-flex .about img {
+    margin-right: auto;
+    margin-left: auto;
+    min-width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 50px;
+    object-fit: cover;
+  }
+
+  .single-flex .about h2 {
+    text-align: center;
+    font-size: 30px;
+    padding: 0;
+  }
+
+  .single-flex .about h2::after {
+    content: "";
+    display: block;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 0.5px solid #333;
+  }
+
+  .single-flex .about li {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .single-flex .past-posts {
+    margin-top: 30px;
+    width: 100%;
+    border: 0.5px solid #777777;
+    border-radius: 5px;
+  }
+
+  .single-flex .past-posts .sukuroru {
+    height: 450px;
+  }
+
+  .single-flex .past-posts .sukuroru ul {
+    display: block;
+  }
+
+  .single-flex .past-posts h2 {
+    text-align: center;
+    font-size: 30px;
+    padding: 0;
+  }
+  .single-flex .past-posts h2::after {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .single-flex .popular-posts {
+    margin-top: 30px;
+    width: 100%;
+    border: 0.5px solid #777777;
+    border-radius: 5px;
+    padding-bottom: 50px;
+  }
+
+  .single-flex .popular-posts h2 {
+    text-align: center;
+    font-size: 30px;
+    padding: 0;
+  }
+  .single-flex .popular-posts h2::after {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .single-flex .popular-posts img {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .single-flex .popular-posts .post-thumbnail {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 90%;
+    height: 100px;
+    max-width: 100%;
+    opacity: 0.8;
+  }
+
+  .single-flex .popular-posts span.post-wpp-views {
+    display: none;
+  }
+
+  .single-flex .popular-posts .new_title3 {
+    font-size: 14px;
+    margin-left: 30px;
+  }
+
+  .background-inner {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+  }
+
+  .background-inner h2 {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .background-inner h2::after {
+    content: "";
+    display: block;
+    border-bottom: solid #484848;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .background-inner h3 {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .background-inner h3::after {
+    content: "";
+    display: block;
+    border-bottom: solid #484848;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .background-inner h4 {
+    text-align: center;
+    margin: 25px;
+  }
+
+  .background-inner h4::after {
+    content: "";
+    display: block;
+    border-bottom: solid #484848;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .background-inner h5 {
+    text-align: center;
+    margin: 25px;
+  }
+
+  .background-inner h5::after {
+    content: "";
+    display: block;
+    border-bottom: solid #484848;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .background-inner h6 {
+    text-align: center;
+    margin: 25px;
+  }
+
+  .background-inner h6::after {
+    content: "";
+    display: block;
+    border-bottom: solid #484848;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .background-inner p {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    font-size: 16px;
+    line-height: 40px;
+  }
+
+  .wp-block-post-featured-image img {
+    max-width: initial;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .coments h4 {
+    font-size: 40px;
+    margin-top: 100px;
+  }
+
+  .single-top .entry-meta {
+    font-size: 14px;
+    margin-left: 50px;
+    width: 9%;
+    padding: 10px 10px;
+    color: #000;
+    background: rgba(255, 255, 255, 60%);
+    border-radius: 20px;
+  }
+
+  .commnets p {
+    font-size: 40px;
+  }
+}
