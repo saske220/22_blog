@@ -1126,7 +1126,7 @@ iframe {
   }
 
   .nomal a::after {
-    content: "";
+    content: " ";
     /*絶対配置で線の位置を決める*/
     position: absolute;
     bottom: 0;
