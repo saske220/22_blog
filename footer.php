@@ -1,10 +1,8 @@
-    <div class="inner">
 
-        </div>
 
-   <footer>
+   <footer class="footer">
 
-        <p>
+        <p class="footer__copy">
 
                 Copyright@2023 furuhashi sasuke blog
 
@@ -102,5 +100,9 @@ mask.onclick = () => {
     nav.classList.toggle("open");
 };
     </script>
+
+    <script>
+  AOS.init();
+</script>
     <!-- jsファイルはここに読み込む -->
     <?php wp_footer(); ?>

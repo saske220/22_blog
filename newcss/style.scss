@@ -3,7 +3,7 @@
 $text-color: #353838;
 $bg-color: #f0f0f0;
 body {
-  background-color: #f0f0f0;
+  background-color: $bg-color;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -35,15 +35,16 @@ h3 {
   margin: 0;
   padding: 0;
 }
+div#respond {
+  display: none;
+}
 
 .header {
   position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
   width: 100%;
   top: 50px;
-
+  z-index: 99;
   &__title {
     font-size: 1.3em;
     margin-left: 10px;
@@ -52,7 +53,9 @@ h3 {
     display: flex;
   }
   &__item {
-    margin-right: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
   }
 }
 .main {
@@ -62,21 +65,24 @@ h3 {
   }
   &__flex {
     margin: 100px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  }
+
+  &__title {
+    font-size: 1.5em;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
   }
 }
 
 .newPosts {
-  width: 70%;
+  width: 100%;
 
   &__grid {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 450px);
-    justify-content: center;
-    grid-gap: 50px;
   }
 
   &__title {
@@ -84,14 +90,14 @@ h3 {
     font-size: 2em;
     font-family: "Zen Old Mincho", serif;
     font-weight: bold;
-    padding-bottom: 5px;
+
     margin-bottom: 40px;
-    text-align: left;
+    text-align: center;
     border-bottom: 2px solid $text-color;
   }
 }
 .postCard {
-  width: 450px;
+  width: 100%;
   &__text {
     display: flex;
     align-items: center;
@@ -123,14 +129,12 @@ h3 {
 .imgBox {
   overflow: hidden;
   &__category {
+    margin: 0;
     position: absolute;
-    left: 5px;
-    top: 5px;
-    width: auto;
-    display: block;
+    color: $bg-color;
     background: rgba(0, 0, 0, 52%);
-    color: #fff;
-    padding: 10px;
+    padding: 5px;
+    z-index: 2;
   }
   img {
     width: 100%;
@@ -138,36 +142,1039 @@ h3 {
     object-fit: cover;
     border-radius: 5px;
     transition: 0.2s;
+    z-index: -1;
   }
 }
 
 .archiveArea {
-  width: 20%;
-  height: 80vh;
-  border-radius: 5px;
-  overflow: scroll;
-  background-color: $text-color;
-  color: $bg-color;
+  width: 100%;
+  margin-top: 100px;
+
   a {
-    color: $bg-color;
+    color: $text-color;
   }
 
   &__title {
     font-size: 2em;
     font-family: "Zen Old Mincho", serif;
     font-weight: bold;
-    margin-top: 20px;
+
     margin-bottom: 20px;
     text-align: center;
+    border-bottom: 2px solid $text-color;
   }
 
   &__inner {
     width: 90%;
     margin: 0 auto;
+    height: 50vh;
+    overflow: scroll;
   }
 
   li {
     padding: 10px 10px;
-    border-bottom: 1px solid $bg-color;
+    border-bottom: 0.5px solid $bg-color;
+    a {
+      color: #446196;
+    }
+  }
+}
+
+.arcvCate {
+  width: 100%;
+
+  &__title {
+    font-size: 2em;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 2px solid $text-color;
+  }
+
+  &__flex {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-decoration: none;
+  }
+  li {
+    padding: 5px;
+    border: 0.5px solid #333;
+    margin: 5px 5px;
+    display: inline-block;
+  }
+}
+
+.cate {
+  margin-top: 100px;
+  &__title {
+    font-size: 2em;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 2px solid $text-color;
+  }
+  a {
+    color: #446196;
+  }
+
+  &__inner {
+    width: 90%;
+    margin: 0 auto;
+    height: 50vh;
+    overflow: scroll;
+  }
+}
+
+.pastPosts {
+  width: 100%;
+  &__title {
+    font-size: 2em;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 2px solid $text-color;
+  }
+  &__list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+    grid-gap: 10px;
+  }
+  &__item {
+    width: 300px;
+    border: 0.5px solid $text-color;
+    padding: 15px 0;
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__time {
+      font-size: 1.1em;
+      color: #666;
+    }
+    &__title {
+      font-size: 1.1em;
+      font-weight: normal;
+    }
+  }
+}
+
+.item {
+  &__flex {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 90%;
+    margin: 0 auto;
+
+    img {
+      width: 50%;
+      height: 90px;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    width: 45%;
+    padding-left: 10px;
+  }
+  &__category {
+    display: block;
+    position: relative;
+    font-size: 10px;
+    background: rgba(0, 0, 0, 52%);
+    color: #fff;
+    padding: 5px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    left: -140px;
+    top: 3px;
+    width: 50%;
+  }
+
+  &__time {
+    font-size: 12px;
+    color: #446196;
+    border-bottom: 1px solid #446196;
+  }
+
+  &__title {
+    font-size: 12px;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    padding-bottom: 5px;
+
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    height: 33px;
+    color: #446196;
+  }
+}
+
+.pastAboutFlex {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.about {
+  width: 100%;
+
+  &__title {
+    font-size: 2em;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 2px solid $text-color;
+  }
+
+  &__img {
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 50px;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__name {
+    font-size: 1.5em;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  &__item {
+    font-size: 14px;
+    padding: 15px 25px;
+  }
+
+  &__item:not(:last-child) {
+    border-bottom: 0.5px solid #484848;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: $bg-color;
+  color: $text-color;
+  &__copy {
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-top: 20px;
+    font-size: 9px;
+    text-align: center;
+  }
+}
+
+.entry {
+  width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border: 0.5px solid;
+  &__title {
+    font-size: 2em;
+    font-family: "Zen Old Mincho", serif;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  &__icachImg img {
+    display: block;
+    width: 90%;
+    height: auto;
+    max-height: 500px;
+    margin: 20px auto;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  &__backButton {
+    display: block;
+    margin: 10px auto 10px 10px;
+    width: 100px;
+    height: 50px;
+    color: $text-color;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__time {
+    font-size: 1.1em;
+    color: #666;
+    text-align: right;
+    margin-right: 50px;
+  }
+
+  &__content {
+    padding: 0 50px;
+
+    p {
+      font-size: 16px;
+      line-height: 40px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: bold;
+      border-bottom: 1px solid $text-color;
+      border-left: 7px solid $text-color;
+      padding-left: 10px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: $text-color;
+    }
+    h3 {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: $text-color;
+    }
+    h4 {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: $text-color;
+    }
+  }
+}
+
+.category {
+  &__list {
+    display: flex;
+    margin-left: 10px;
+
+    li {
+      margin-right: 10px;
+      padding: 5px;
+      border: 0.5px solid $text-color;
+    }
+  }
+}
+
+.single {
+  &__flex {
+    width: 85%;
+    margin: 100px auto;
+  }
+
+  .about {
+    width: 100%;
+    margin-top: 100px;
+    border: 0.5px solid $text-color;
+
+    &__title {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      border-bottom: none;
+      color: $text-color;
+    }
+  }
+
+  .pastPosts {
+    margin: 100px 0;
+    width: 100%;
+
+    border: 0.5px solid $text-color;
+    &__title {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      border-bottom: none;
+      color: $text-color;
+    }
+    &__scroll {
+      height: 70vh;
+      overflow: scroll;
+    }
+
+    &__list {
+      display: block;
+
+      li {
+        padding: 15px 10px;
+        border-bottom: 0.5px dashed $text-color;
+        color: #446196;
+        font-size: 14px;
+        a {
+          color: #446196;
+        }
+      }
+    }
+  }
+  &__sideber {
+    width: 100%;
+    display: block;
+  }
+
+  .popularPosts {
+    margin: 100px 0;
+    width: 100%;
+
+    border: 0.5px solid $text-color;
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+      margin-top: 50px;
+      border-bottom: none;
+      color: $text-color;
+    }
+    .post-wpp-views {
+      display: none;
+    }
+    img {
+      float: none;
+      width: 90%;
+      height: 100px;
+      object-fit: cover;
+      margin: 0 auto;
+      border-radius: 5px;
+      opacity: 0.8;
+      display: block;
+    }
+
+    .new_title3 {
+      font-size: 14px;
+      margin-top: 10px;
+      margin-left: 20px;
+      margin-bottom: 50px;
+    }
+  }
+
+  .comments {
+    margin: 100px 0;
+    width: 100%;
+
+    border: 0.5px solid $text-color;
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+      margin-top: 50px;
+      border-bottom: none;
+      color: $text-color;
+    }
+  }
+  .prevNext {
+    &__list {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+    }
+  }
+}
+
+@media (min-width: 730px) {
+  .header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    top: 50px;
+
+    &__title {
+      font-size: 1.3em;
+      margin-left: 10px;
+    }
+    &__list {
+      display: flex;
+    }
+    &__item {
+      margin-right: 10px;
+    }
+  }
+  .main {
+    &__inner {
+      width: 90%;
+      margin: 0 auto;
+    }
+    &__flex {
+      margin: 100px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+  }
+
+  .newPosts {
+    width: 70%;
+
+    &__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 450px);
+      justify-content: center;
+      grid-gap: 50px;
+    }
+
+    &__title {
+      width: auto;
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+
+      margin-bottom: 40px;
+      text-align: center;
+      border-bottom: 2px solid $text-color;
+    }
+  }
+  .postCard {
+    width: 450px;
+    &__text {
+      display: flex;
+      align-items: center;
+    }
+
+    &__time {
+      width: 40%;
+      font-size: 1.1em;
+      color: #666;
+    }
+
+    &__title {
+      width: 70%;
+      font-size: 1.1em;
+      font-weight: normal;
+    }
+
+    &:hover {
+      .imgBox {
+        img {
+          transform: scale(1.1);
+          transition: 0.2s;
+        }
+        overflow: hidden;
+      }
+    }
+  }
+
+  .imgBox {
+    overflow: hidden;
+    &__category {
+      margin: 0;
+      position: absolute;
+      color: $bg-color;
+      background: rgba(0, 0, 0, 52%);
+      padding: 5px;
+      z-index: 2;
+    }
+    img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 5px;
+      transition: 0.2s;
+      z-index: -1;
+    }
+  }
+
+  .archiveArea {
+    width: 100%;
+    margin-top: 0;
+
+    a {
+      color: $text-color;
+    }
+
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+
+      margin-bottom: 20px;
+      text-align: center;
+      border-bottom: 2px solid $text-color;
+    }
+
+    &__inner {
+      width: 90%;
+      margin: 0 auto;
+      height: 50vh;
+      overflow: scroll;
+    }
+
+    li {
+      padding: 10px 10px;
+      border-bottom: 0.5px solid $bg-color;
+      a {
+        color: #446196;
+      }
+    }
+  }
+
+  .arcvCate {
+    width: 25%;
+
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-bottom: 40px;
+      text-align: center;
+      border-bottom: 2px solid $text-color;
+    }
+
+    &__flex {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      text-decoration: none;
+    }
+    li {
+      padding: 5px;
+      border: 0.5px solid #333;
+      margin: 5px 5px;
+      display: inline-block;
+    }
+  }
+
+  .cate {
+    margin-top: 100px;
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-bottom: 40px;
+      text-align: center;
+      border-bottom: 2px solid $text-color;
+    }
+    a {
+      color: #446196;
+    }
+
+    &__inner {
+      width: 90%;
+      margin: 0 auto;
+      height: 50vh;
+      overflow: scroll;
+    }
+  }
+
+  .pastPosts {
+    width: 65%;
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-bottom: 40px;
+      text-align: center;
+      border-bottom: 2px solid $text-color;
+    }
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 300px);
+      justify-content: center;
+      grid-gap: 10px;
+    }
+    &__item {
+      width: 300px;
+      border: 0.5px solid $text-color;
+      padding: 15px 0;
+      &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      &__time {
+        font-size: 1.1em;
+        color: #666;
+      }
+      &__title {
+        font-size: 1.1em;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .item {
+    &__flex {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row-reverse;
+      width: 90%;
+      margin: 0 auto;
+      img {
+        width: 50%;
+        height: 90px;
+        object-fit: cover;
+      }
+    }
+
+    &__text {
+      width: 45%;
+      padding-left: 10px;
+    }
+    &__category {
+      display: block;
+      position: relative;
+      font-size: 10px;
+      background: rgba(0, 0, 0, 52%);
+      color: #fff;
+      padding: 5px;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      left: -140px;
+      top: 3px;
+      width: 50%;
+    }
+
+    &__time {
+      font-size: 12px;
+      color: #446196;
+      border-bottom: 1px solid #446196;
+    }
+
+    &__title {
+      font-size: 12px;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      height: 33px;
+      color: #446196;
+    }
+  }
+
+  .pastAboutFlex {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .about {
+    width: 30%;
+
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      padding-bottom: 5px;
+      margin-bottom: 40px;
+      text-align: center;
+      border-bottom: 2px solid $text-color;
+    }
+
+    &__img {
+      margin-right: auto;
+      margin-left: auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 50px;
+      object-fit: cover;
+      display: block;
+    }
+
+    &__name {
+      font-size: 1.5em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    &__item {
+      font-size: 14px;
+      padding: 15px 25px;
+    }
+
+    &__item:not(:last-child) {
+      border-bottom: 0.5px solid #484848;
+    }
+  }
+
+  .footer {
+    width: 100%;
+    height: 50px;
+    background-color: $bg-color;
+    color: $text-color;
+    &__copy {
+      margin-right: auto;
+      margin-left: auto;
+      width: 50%;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      margin-top: 20px;
+      font-size: 9px;
+      text-align: center;
+    }
+  }
+  .entry {
+    width: 60%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 0.5px solid;
+    &__title {
+      font-size: 2em;
+      font-family: "Zen Old Mincho", serif;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    &__icachImg img {
+      display: block;
+      width: 90%;
+      height: auto;
+      max-height: 500px;
+      margin: 20px auto;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    &__backButton {
+      display: block;
+      margin: 10px auto 10px 10px;
+      width: 100px;
+      height: 50px;
+      color: $text-color;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &__time {
+      font-size: 1.1em;
+      color: #666;
+      text-align: right;
+      margin-right: 50px;
+    }
+
+    &__content {
+      padding: 0 50px;
+
+      p {
+        font-size: 16px;
+        line-height: 40px;
+      }
+
+      h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+        border-bottom: 1px solid $text-color;
+        border-left: 7px solid $text-color;
+        padding-left: 10px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: $text-color;
+      }
+      h3 {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: $text-color;
+      }
+      h4 {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: $text-color;
+      }
+    }
+  }
+
+  .category {
+    &__list {
+      display: flex;
+      margin-left: 10px;
+
+      li {
+        margin-right: 10px;
+        padding: 5px;
+        border: 0.5px solid $text-color;
+      }
+    }
+  }
+
+  .single {
+    &__flex {
+      width: 85%;
+      margin: 100px auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .about {
+      width: 100%;
+      margin-top: 0;
+      padding: 20px;
+      border: 0.5px solid $text-color;
+
+      &__title {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border-bottom: none;
+        color: $text-color;
+      }
+    }
+
+    .pastPosts {
+      margin: 100px 0;
+      width: 100%;
+      padding: 20px;
+      border: 0.5px solid $text-color;
+      &__title {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border-bottom: none;
+        color: $text-color;
+      }
+      &__scroll {
+        height: 70vh;
+        overflow: scroll;
+      }
+
+      &__list {
+        display: block;
+
+        li {
+          padding: 15px 10px;
+          border-bottom: 0.5px dashed $text-color;
+          color: #446196;
+          font-size: 14px;
+          a {
+            color: #446196;
+          }
+        }
+      }
+    }
+    &__sideber {
+      width: 30%;
+    }
+
+    .popularPosts {
+      margin: 100px 0;
+      width: 100%;
+      padding: 20px;
+      border: 0.5px solid $text-color;
+      &__title {
+        font-size: 2em;
+        font-family: "Zen Old Mincho", serif;
+        font-weight: bold;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-top: 50px;
+        border-bottom: none;
+        color: $text-color;
+      }
+      .post-wpp-views {
+        display: none;
+      }
+      img {
+        float: none;
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        margin: 0 0 0 0;
+        border-radius: 5px;
+        opacity: 0.8;
+      }
+
+      .new_title3 {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-bottom: 50px;
+      }
+    }
+
+    .comments {
+      margin: 100px 0;
+      width: 100%;
+      padding: 20px;
+      border: 0.5px solid $text-color;
+      &__title {
+        font-size: 2em;
+        font-family: "Zen Old Mincho", serif;
+        font-weight: bold;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-top: 50px;
+        border-bottom: none;
+        color: $text-color;
+      }
+    }
+    .prevNext {
+      &__list {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+      }
+    }
   }
 }

@@ -60,13 +60,8 @@
                              <?php while (have_posts()): //記事がある間は繰り返す
                              the_post(); //次の記事のデータをセットする?>
                              <!--1記事め開始-->
-
-
                         <article id="post-<?php the_ID(); ?>" <?php post_class("box"); ?> href="<?php the_permalink(); ?>">
                             <a href="<?php the_permalink(); ?>">
-
-
-
                                <?php if(has_post_thumbnail()): ?> <!-- もしアイキャッチ画像があるのであれば、 -->
                                  <?php the_post_thumbnail('full'); ?>
                              <?php else: ?> <!--アイキャッチ画像がない場合は、デフォルトの画像を表示-->

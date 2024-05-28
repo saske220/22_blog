@@ -4,9 +4,11 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <title><?php bloginfo('name'); ?>｜エンジニアになるために魂を賭ける漢のブログ</title>
 
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo esc_url(get_theme_file_uri()); ?>/newcss/style.css">
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -26,10 +28,10 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <header class="header">
-        <h1 class="header__title">エンジニアになるために魂を賭ける漢のブログ</h1>
+
         <ul class="header__list">
-            <li class="header__item"><a href="<?php echo esc_url(home_url('/')); ?>">top</a></li>
-             <li class="header__item"><a href="<?php echo esc_url(home_url('/')); ?>">top</a></li>
+            <li class="header__item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+             <li class="header__item"><a href="https://sasukef.fem.jp/portfolio/" target="blank">Portfolio</a></li>
         </ul>
 
     </header>
